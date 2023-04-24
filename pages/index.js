@@ -1,24 +1,35 @@
 import Head from "next/head";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import { Grid, Page, Spacer, Text, Image, Divider } from "@geist-ui/core";
+import {
+  Grid,
+  Page,
+  Spacer,
+  Text,
+  Image,
+  Divider,
+  useMediaQuery,
+} from "@geist-ui/core";
 import Link from "next/link";
 
 export default function Home() {
   const { t } = useTranslation("resume");
+  const isSM = useMediaQuery("sm");
+  const isXS = useMediaQuery("xs");
+  const isSmallViewport = isSM || isXS;
 
   return (
     <>
       <Head>
-        <title>Luana Radiguet</title>
+        <title>Radilua</title>
         <meta name="description" content="Artist" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/favicon.svg" />
       </Head>
 
       <Page
         style={{
-          padding: "4rem",
+          padding: isSM ? "1rem" : isXS ? "0rem" : "4rem",
         }}
       >
         {/* <Text h1>{t("hello-world")}</Text> */}
@@ -30,7 +41,7 @@ export default function Home() {
                 margin: 0,
               }}
             >
-              Luana Radiguet
+              Radilua
             </Text>
             <Text
               h4
@@ -44,17 +55,41 @@ export default function Home() {
         </Page.Header>
         <Page.Content>
           <Grid.Container gap={1} justify="center">
-            <Grid xs={6}>
-              <Image src={"/images/alligator.jpg"} height={"300px"} />
+            <Grid xs={12} sm={6}>
+              <Image
+                src={"/images/alligator.jpg"}
+                height={"auto"}
+                style={{
+                  maxHeight: "20rem",
+                }}
+              />
             </Grid>
-            <Grid xs={6}>
-              <Image src={"/images/rune.jpg"} height={"300px"} />
+            <Grid xs={12} sm={6}>
+              <Image
+                src={"/images/rune.jpg"}
+                height={"auto"}
+                style={{
+                  maxHeight: "20rem",
+                }}
+              />
             </Grid>
-            <Grid xs={6}>
-              <Image src={"/images/fading-away.jpg"} height={"300px"} />
+            <Grid xs={12} sm={6}>
+              <Image
+                src={"/images/fading-away.jpg"}
+                height={"auto"}
+                style={{
+                  maxHeight: "20rem",
+                }}
+              />
             </Grid>
-            <Grid xs={6}>
-              <Image src={"/images/being-born.jpg"} height={"300px"} />
+            <Grid xs={12} sm={6}>
+              <Image
+                src={"/images/being-born.jpg"}
+                height={"auto"}
+                style={{
+                  maxHeight: "20rem",
+                }}
+              />
             </Grid>
           </Grid.Container>
           <Spacer h={0.5} />
