@@ -38,7 +38,7 @@ export default function Home() {
                 margin: 0,
               }}
             >
-              I draw on people's skin using a needle and my hands
+              I draw on people&apos;s skin using a needle and my hands
             </Text>
           </div>
         </Page.Header>
