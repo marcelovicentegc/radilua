@@ -11,12 +11,12 @@ import {
   useMediaQuery,
 } from "@geist-ui/core";
 import Link from "next/link";
+import nextI18nextConfig from "@radilua/next-i18next.config";
 
 export default function Home() {
   const { t } = useTranslation("resume");
   const isSM = useMediaQuery("sm");
   const isXS = useMediaQuery("xs");
-  const isSmallViewport = isSM || isXS;
 
   return (
     <>
@@ -26,13 +26,19 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.svg" />
       </Head>
-
+      <div
+        style={{
+          height: "1rem",
+          width: "100vw",
+          backgroundColor: "black",
+        }}
+      />
       <Page
         style={{
-          padding: isSM ? "1rem" : isXS ? "0rem" : "4rem",
+          padding: isSM ? "2rem" : isXS ? "1rem" : "4rem",
+          minHeight: "calc(100vh - 1rem)",
         }}
       >
-        {/* <Text h1>{t("hello-world")}</Text> */}
         <Page.Header>
           <div>
             <Text
@@ -49,7 +55,7 @@ export default function Home() {
                 margin: 0,
               }}
             >
-              I draw on people&apos;s skin using a needle and my hands
+              {t("common:tagline")}
             </Text>
           </div>
         </Page.Header>
@@ -60,7 +66,7 @@ export default function Home() {
                 src={"/images/alligator.jpg"}
                 height={"auto"}
                 style={{
-                  maxHeight: "20rem",
+                  maxHeight: "18rem",
                 }}
               />
             </Grid>
@@ -69,7 +75,7 @@ export default function Home() {
                 src={"/images/rune.jpg"}
                 height={"auto"}
                 style={{
-                  maxHeight: "20rem",
+                  maxHeight: "18rem",
                 }}
               />
             </Grid>
@@ -78,7 +84,7 @@ export default function Home() {
                 src={"/images/fading-away.jpg"}
                 height={"auto"}
                 style={{
-                  maxHeight: "20rem",
+                  maxHeight: "18rem",
                 }}
               />
             </Grid>
@@ -87,7 +93,7 @@ export default function Home() {
                 src={"/images/being-born.jpg"}
                 height={"auto"}
                 style={{
-                  maxHeight: "20rem",
+                  maxHeight: "18rem",
                 }}
               />
             </Grid>
@@ -105,10 +111,19 @@ export default function Home() {
               </div>
             </Grid>
             <Grid xs={12}>
-              <div>
-                <Text h4>Book an appointment</Text>
-                <Link href={"mailto:radiguetluana@gmail.com"}>
-                  Email me @ radiguetluana@gmail.com
+              <div
+                style={{
+                  width: isXS ? "8rem" : isSM ? "16rem" : "unset",
+                }}
+              >
+                <Text h4>{t("common:book-me")}</Text>
+                <Link
+                  href={"mailto:radiguetluana@gmail.com"}
+                  style={{
+                    wordWrap: "break-word",
+                  }}
+                >
+                  {t("common:email-me")} @ radiguetluana@gmail.com
                 </Link>
               </div>
             </Grid>
@@ -116,7 +131,7 @@ export default function Home() {
         </Page.Content>
         <Page.Footer
           style={{
-            paddingBottom: "1rem",
+            paddingBottom: "3rem",
             display: "flex",
           }}
         >
@@ -138,10 +153,8 @@ export default function Home() {
   );
 }
 
-export async function getStaticProps({ locale }) {
-  return {
-    props: {
-      ...(await serverSideTranslations(locale, ["resume"])),
-    },
-  };
-}
+export const getStaticProps = async ({ locale }) => ({
+  props: {
+    ...(await serverSideTranslations(locale, ["common"], nextI18nextConfig)),
+  },
+});
