@@ -80,7 +80,7 @@ export default function Home() {
           <Grid.Container gap={1} justify="center">
             {randomImageSet.map((image) => {
               return (
-                <Grid xs={12} sm={6}>
+                <Grid xs={12} sm={6} key={image}>
                   <Image
                     src={`/images/${image}.jpg`}
                     height={isXS ? "8rem" : isSM ? "12rem" : "18em"}
