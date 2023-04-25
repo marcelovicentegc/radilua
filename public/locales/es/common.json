@@ -1,5 +1,18 @@
 {
   "tagline": "Dibujo en la piel de las personas con una aguja y mis manos",
   "email-me": "Envíame un correo electrónico",
-  "book-me": "Reserva una cita"
+  "book-me": "Reserva una cita",
+  "agenda": "Agenda",
+  "january": "enero",
+  "february": "febrero",
+  "march": "marzo",
+  "april": "abril",
+  "may": "mayo",
+  "june": "junio",
+  "july": "julio",
+  "august": "agosto",
+  "september": "septiembre",
+  "october": "octubre",
+  "november": "noviembre",
+  "december": "diciembre"
 }

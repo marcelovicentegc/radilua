@@ -1,22 +1,39 @@
 import Head from "next/head";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import {
-  Grid,
-  Page,
-  Spacer,
-  Text,
-  Image,
-  Divider,
-  useMediaQuery,
-} from "@geist-ui/core";
+import { Grid, Page, Spacer, Text, Image, Divider } from "@geist-ui/core";
 import Link from "next/link";
 import nextI18nextConfig from "@radilua/next-i18next.config";
+import { useEffect, useState } from "react";
 
 export default function Home() {
   const { t } = useTranslation("resume");
-  const isSM = useMediaQuery("sm");
-  const isXS = useMediaQuery("xs");
+  const [isSM, setIsSM] = useState(false);
+  const [isXS, setIsXS] = useState(false);
+
+  useEffect(() => {
+    setIsSM(
+      window.matchMedia("(min-width: 650px) and (max-width: 900px)").matches
+    );
+
+    setIsXS(window.matchMedia("(min-width: 0) and (max-width: 650px)").matches);
+  }, []);
+
+  const [randomImageSet, setRandomImageSet] = useState([]);
+
+  useEffect(() => {
+    let arr = [];
+
+    while (arr.length < 4) {
+      let num = Math.floor(Math.random() * 14) + 1;
+
+      if (arr.indexOf(num) === -1) {
+        arr.push(num);
+      }
+    }
+
+    setRandomImageSet(arr);
+  }, []);
 
   return (
     <>
@@ -61,42 +78,17 @@ export default function Home() {
         </Page.Header>
         <Page.Content>
           <Grid.Container gap={1} justify="center">
-            <Grid xs={12} sm={6}>
-              <Image
-                src={"/images/alligator.jpg"}
-                height={"auto"}
-                style={{
-                  maxHeight: "18rem",
-                }}
-              />
-            </Grid>
-            <Grid xs={12} sm={6}>
-              <Image
-                src={"/images/rune.jpg"}
-                height={"auto"}
-                style={{
-                  maxHeight: "18rem",
-                }}
-              />
-            </Grid>
-            <Grid xs={12} sm={6}>
-              <Image
-                src={"/images/fading-away.jpg"}
-                height={"auto"}
-                style={{
-                  maxHeight: "18rem",
-                }}
-              />
-            </Grid>
-            <Grid xs={12} sm={6}>
-              <Image
-                src={"/images/being-born.jpg"}
-                height={"auto"}
-                style={{
-                  maxHeight: "18rem",
-                }}
-              />
-            </Grid>
+            {randomImageSet.map((image) => {
+              return (
+                <Grid xs={12} sm={6}>
+                  <Image
+                    src={`/images/${image}.jpg`}
+                    height={isXS ? "8rem" : isSM ? "12rem" : "18em"}
+                    width={isXS ? "8rem" : isSM ? "12rem" : "18em"}
+                  />
+                </Grid>
+              );
+            })}
           </Grid.Container>
           <Spacer h={0.5} />
           <Divider />
@@ -104,10 +96,17 @@ export default function Home() {
           <Grid.Container gap={1}>
             <Grid xs={12}>
               <div>
-                <Text h4>Agenda</Text>
-                <Text>Florianópolis, Brazil {"|"} April - May</Text>
-                <Text>São Paulo, Brazil {"|"} May</Text>
-                <Text>Barcelona, Spain {"|"} May - Undefined</Text>
+                <Text h4>{t("common:agenda")}</Text>
+                <Text>
+                  Florianópolis, Brasil {"|"} {t("common:april")} -{" "}
+                  {t("common:may")}
+                </Text>
+                <Text>
+                  São Paulo, Brasil {"|"} {t("common:may")}
+                </Text>
+                <Text>
+                  Barcelona, España {"|"} {t("common:may")} - ?
+                </Text>
               </div>
             </Grid>
             <Grid xs={12}>
