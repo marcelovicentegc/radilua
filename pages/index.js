@@ -137,15 +137,6 @@ export default function Home() {
           <Link href={"https://instagram.com/radiilua"} target="_blank">
             @radiilua
           </Link>
-          <Spacer h={0.5} />
-          <Link
-            href={
-              "https://drive.google.com/drive/u/0/folders/1_uid6humVwgAp6zTj5UtP-l_pwUdt_bi"
-            }
-            target="_blank"
-          >
-            Resume
-          </Link>
         </Page.Footer>
       </Page>
     </>
