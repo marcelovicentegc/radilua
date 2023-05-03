@@ -98,14 +98,10 @@ export default function Home() {
               <div>
                 <Text h4>{t("common:agenda")}</Text>
                 <Text>
-                  Florianópolis, Brasil {"|"} {t("common:april")} -{" "}
-                  {t("common:may")}
+                  São Paulo, Brasil {"|"} 03-06 {t("common:may")}
                 </Text>
                 <Text>
-                  São Paulo, Brasil {"|"} {t("common:may")}
-                </Text>
-                <Text>
-                  Barcelona, España {"|"} {t("common:may")} - ?
+                  Barcelona, España {"|"} {t("common:may")} - {t("common:june")}
                 </Text>
               </div>
             </Grid>
