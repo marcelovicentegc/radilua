@@ -98,9 +98,6 @@ export default function Home() {
               <div>
                 <Text h4>{t("common:agenda")}</Text>
                 <Text>
-                  São Paulo, Brasil {"|"} 03-06 {t("common:may")}
-                </Text>
-                <Text>
                   Barcelona, España {"|"} {t("common:may")} - {t("common:june")}
                 </Text>
               </div>
