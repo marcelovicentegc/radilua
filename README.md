@@ -17,7 +17,8 @@ Radilua.com is the online portfolio of Radilua, a tattoo artist and illustrator.
 
 To start developing the project you must have yarn installed on your machine.
 
-
+Once you have yarn installed, run `yarn dev` on your terminal and open http://localhost:3000 on your browser to start developing the application.
+ 
 ## Deployment
 
 
